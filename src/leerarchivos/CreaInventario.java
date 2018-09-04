@@ -27,7 +27,7 @@ public class CreaInventario {
       try{
           FileWriter fw =new FileWriter(arch);
           BufferedWriter bw=new BufferedWriter(fw);
-          PrintWriter archSal=new PrintWriter(bw);
+          PrintWriter archSal=new PrintWriter(bw);//leer
           archSal.println("3");
           archSal.println(imts[i++].getDatos());
           archSal.println(imts[i++].getDatos());
@@ -47,22 +47,22 @@ public class CreaInventario {
       float precio;
       try{
           FileReader fr=new FileReader(arc);
-          BufferedReader archEnt =new BufferedReader(fr);
+          BufferedReader archEnt =new BufferedReader(fr);//leer
           
-          linea1=archEnt.readLine();
+          linea1=archEnt.readLine();//me situo en la primera linea
           Max1=Integer.parseInt(linea1);
           
           Producto []inc=new Producto[Max1];
           
-          linea1=archEnt.readLine();
+          linea1=archEnt.readLine();//salto a la siguiente linea
          
-          while(linea1!=null){
+          while(linea1!=null){//ciclo de cargar datos
               tokenizer=new StringTokenizer(linea1);
               nombre=tokenizer.nextToken();
               try{
                   unidades=Integer.parseInt(tokenizer.nextToken());
                   precio=Float.parseFloat(tokenizer.nextToken());
-                  inc[cuenta++]=new Producto(nombre,unidades,precio);         
+                inc[cuenta++]=new Producto(nombre,unidades,precio);//carga datos         
               }catch(NumberFormatException exc){
                   System.out.println("Error en la entrada.linea ignorada");
                   System.out.println(linea1);
@@ -71,7 +71,7 @@ public class CreaInventario {
           }
           archEnt.close();
           for(int s=0;s<cuenta;s++){
-              System.out.println(" "+inc[s].ToString());
+              System.out.println(" "+inc[s].ToString());//imp por pantalla
           }
       }catch(FileNotFoundException exc){
           System.out.println("El archivo "+arch+"no fue econtrado");
