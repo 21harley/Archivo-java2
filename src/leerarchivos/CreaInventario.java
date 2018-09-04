@@ -40,7 +40,7 @@ public class CreaInventario {
           System.out.println(exc);
       }
        int Max1;
-     
+     //leer Archivo
       StringTokenizer tokenizer;
       String linea1,nombre,arc="Inventario.txt";
       int unidades,cuenta=0;
@@ -48,10 +48,14 @@ public class CreaInventario {
       try{
           FileReader fr=new FileReader(arc);
           BufferedReader archEnt =new BufferedReader(fr);
+          
           linea1=archEnt.readLine();
           Max1=Integer.parseInt(linea1);
+          
           Producto []inc=new Producto[Max1];
+          
           linea1=archEnt.readLine();
+         
           while(linea1!=null){
               tokenizer=new StringTokenizer(linea1);
               nombre=tokenizer.nextToken();
@@ -67,7 +71,7 @@ public class CreaInventario {
           }
           archEnt.close();
           for(int s=0;s<cuenta;s++){
-              System.out.println(inc[s].ToString());
+              System.out.println(" "+inc[s].ToString());
           }
       }catch(FileNotFoundException exc){
           System.out.println("El archivo "+arch+"no fue econtrado");
